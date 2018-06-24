@@ -31,4 +31,18 @@ defmodule Cards do
       {:error, _reason} -> "File not found"
     end
   end
+
+  # Imperative way
+  # def create_hand(hand_size) do
+  #   deck = Cards.create_deck
+  #   deck = Cards.shuffle(deck)
+  #   hand = Cards.deal(deck, hand_size)
+  # end
+
+  # Pipe operator
+  def create_hand(hand_size) do
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size)
+  end
 end
